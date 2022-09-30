@@ -62,6 +62,11 @@ class SftpAdapter implements FilesystemAdapter
         $this->visibilityConverter = $visibilityConverter ?: new PortableVisibilityConverter();
         $this->mimeTypeDetector = $mimeTypeDetector ?: new FinfoMimeTypeDetector();
     }
+    
+    public function getConnection()
+    {
+        return $this->connectionProvider->provideConnection();
+    }
 
     public function fileExists(string $path): bool
     {
